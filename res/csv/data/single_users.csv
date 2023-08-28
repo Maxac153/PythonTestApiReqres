@@ -1,0 +1,3 @@
+﻿test_name,id,email,first_name,last_name,avatar,url,text
+Корректные данные,1,george.bluth@reqres.in,George,Bluth,https://reqres.in/img/faces/1-image.jpg,https://reqres.in/#support-heading,"To keep ReqRes free, contributions towards server costs are appreciated!"
+Некорректные данные,100,-,-,-,-,-,-
