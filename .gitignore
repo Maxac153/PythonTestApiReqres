@@ -1,1 +1,8 @@
-/tests/get/.pytest_cache/
+*.pytest_cache
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/.gitignore
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/PythonTestApiReqres.iml
+/.idea/vcs.xml

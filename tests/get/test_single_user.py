@@ -1,13 +1,15 @@
 import json
 from enum import Enum
+from typing import Any
 
 import pytest
 import requests
 
-from api.single_user.request_single_user import Request
-from api.single_user.response_single_user import SingleUser
-from res.csv.reader_csv_file import ReaderCsvFile
-from res.url.url import BaseUrl
+from api.get.request_single_user import Request
+from api.get.response_single_user import SingleUser
+from resources.csv.reader_csv_file import ReaderCsvFile
+from resources.url.url import Url
+
 
 class ResponseStructure(Enum):
     ID = 0
@@ -20,10 +22,10 @@ class ResponseStructure(Enum):
 
 
 class TestSingleUsers:
-    CSV_FILE_PATH = "../../res/csv/data/single_users.csv"
+    _CSV_FILE_PATH = '../../resources/csv/data/single_users/response_single_users.csv'
 
     @staticmethod
-    def check_response(status_code: int, body, extended_result):
+    def check_response(status_code: int, body: Any, extended_result: Any):
         if status_code == 200:
             result_data = SingleUser.from_json(json.dumps(body))
             # Data
@@ -40,11 +42,11 @@ class TestSingleUsers:
         else:
             raise 'Error status code!'
 
-    @pytest.mark.parametrize('data_csv', ReaderCsvFile.read_csv_file(CSV_FILE_PATH))
+    @pytest.mark.parametrize('data_csv', ReaderCsvFile.read_csv_file(_CSV_FILE_PATH))
     def test_single_users(self, data_csv):
         test_name, page = data_csv[:2]
         extended_result = data_csv[1:]
 
-        url = BaseUrl.URL_BASE + Request.URL_SINGLE_USER + page
+        url = Url.URL_BASE + Request.URL_SINGLE_USER + page
         response = requests.get(url)
         self.check_response(response.status_code, response.json(), extended_result)
