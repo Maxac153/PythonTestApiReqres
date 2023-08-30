@@ -5,6 +5,5 @@ from dataclasses_json import dataclass_json
 @dataclass_json
 @dataclass
 class ResponseUpdate:
-    name: str
-    job: str
-    updateAt: str
+    id: str
+    createdAt: str

@@ -26,8 +26,8 @@ class TestCreate:
     _CSV_FILE_PATH_RES = '../../resources/csv/data/create/response_create.csv'
 
     @staticmethod
-    def check_response(status_code: int, body: Any, extended_result: Any):
-        result_data = ResponseCreate.from_json(json.dumps(body))
+    def check_response(status_code: int, result: Any, extended_result: Any):
+        result_data = ResponseCreate.from_json(json.dumps(result))
         date_now = datetime.now().strftime("%Y-%m-%d")
 
         if status_code == 201:
