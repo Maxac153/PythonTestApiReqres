@@ -2,6 +2,7 @@ import json
 from enum import Enum
 from typing import Any
 
+import allure
 import pytest
 import requests
 
@@ -21,6 +22,7 @@ class ResponseStructure(Enum):
     TEXT = 6
 
 
+@allure.epic('Проверка Get метода (Single users)')
 class TestSingleUsers:
     _CSV_FILE_PATH = '../../resources/csv/data/single_users/response_single_users.csv'
 
@@ -44,9 +46,11 @@ class TestSingleUsers:
 
     @pytest.mark.parametrize('data_csv', ReaderCsvFile.read_csv_file(_CSV_FILE_PATH))
     def test_single_users(self, data_csv):
-        test_name, page = data_csv[:2]
-        extended_result = data_csv[1:]
-
-        url = Url.URL_BASE + Request.URL_SINGLE_USER + page
-        response = requests.get(url)
-        self.check_response(response.status_code, response.json(), extended_result)
+        with allure.step('Подготовка данных'):
+            test_name, page = data_csv[:2]
+            extended_result = data_csv[1:]
+            url = Url.URL_BASE + Request.URL_SINGLE_USER + page
+        with allure.step('Get запрос'):
+            response = requests.get(url)
+        with allure.step('Проверка ответа'):
+            self.check_response(response.status_code, response.json(), extended_result)

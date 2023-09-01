@@ -1,0 +1,5 @@
+﻿test_name,email,password
+Корректный ответ,eve.holt@reqres.in,cityslicka
+Пропуск email,,cityslicka
+Пропуск password,eve.holt@reqres.in,
+Пропуск всех полей,,

@@ -3,11 +3,13 @@ from datetime import datetime
 from enum import Enum
 from typing import Any
 
+import allure
 import pytest
 import requests
 
-from api.post.request_create import RequestCreate
-from api.post.response_create import ResponseCreate
+from api.post.create.request_create import RequestCreate
+from api.post.create.response_create import ResponseCreate
+
 from resources.csv.reader_csv_file import ReaderCsvFile
 from resources.url.url import Url
 
@@ -21,6 +23,7 @@ class ResponseStructure(Enum):
     CREATE_AT = 5
 
 
+@allure.epic('Проверка Post метода (Create)')
 class TestCreate:
     _CSV_FILE_PATH_REQ = '../../resources/csv/data/create/request_create.csv'
     _CSV_FILE_PATH_RES = '../../resources/csv/data/create/response_create.csv'
@@ -42,10 +45,12 @@ class TestCreate:
         ReaderCsvFile.read_two_csv_file(_CSV_FILE_PATH_REQ, _CSV_FILE_PATH_RES)
     )
     def test_create(self, data_csv):
-        data_req_csv, data_res_csv = data_csv
-        _, _, name, job = data_req_csv
-
-        req = RequestCreate(name, job)
-        url = Url.URL_BASE + Url.URL_CREATE
-        response = requests.post(url, json.dumps(req.__dict__))
-        self.check_response(response.status_code, response.json(), data_res_csv)
+        with allure.step('Подготовка данных'):
+            data_req_csv, data_res_csv = data_csv
+            _, _, name, job = data_req_csv
+            req = RequestCreate(name, job)
+            url = Url.URL_BASE + Url.URL_CREATE
+        with allure.step('Post запрос'):
+            response = requests.post(url, json.dumps(req.__dict__))
+        with allure.step('Проверка ответа'):
+            self.check_response(response.status_code, response.json(), data_res_csv)
