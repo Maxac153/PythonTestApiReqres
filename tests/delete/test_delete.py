@@ -1,5 +1,4 @@
 import allure
-import pytest
 import requests
 
 from api.delete.request_delete import Request

@@ -1,6 +1,6 @@
 import json
+import os
 from datetime import datetime
-from enum import Enum
 from typing import Any
 
 import allure
@@ -10,13 +10,14 @@ import requests
 from api.put.request_update import RequestUpdate
 from api.put.response_update import ResponseUpdate
 from resources.csv.reader_csv_file import ReaderCsvFile
+
 from resources.url.url import Url
 
 
 @allure.epic('Проверка Put метода (Update)')
 class TestUpdate:
-    _CSV_FILE_PATH_REQ = '../../resources/csv/data/update/request_update.csv'
-    _CSV_FILE_PATH_RES = '../../resources/csv/data/update/response_update.csv'
+    _CSV_FILE_PATH_REQ = os.path.abspath('./') + '/resources/csv/data/update/request_update.csv'
+    _CSV_FILE_PATH_RES = os.path.abspath('./') + '/resources/csv/data/update/response_update.csv'
 
     @staticmethod
     def check_response(status_code: int, result: Any, extended_result: Any):
@@ -40,6 +41,6 @@ class TestUpdate:
             req = RequestUpdate(name, job)
             url = Url.URL_BASE + Url.URL_UPDATE
         with allure.step('Put запрос'):
-            response = requests.put(url, json.dumps(req.__dict__))
+            response = requests.post(url, json.dumps(req.__dict__))
         with allure.step('Проверка ответа'):
             self.check_response(response.status_code, response.json(), data_res_csv)

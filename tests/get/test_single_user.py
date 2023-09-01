@@ -1,4 +1,5 @@
 import json
+import os
 from enum import Enum
 from typing import Any
 
@@ -9,6 +10,7 @@ import requests
 from api.get.request_single_user import Request
 from api.get.response_single_user import SingleUser
 from resources.csv.reader_csv_file import ReaderCsvFile
+
 from resources.url.url import Url
 
 
@@ -24,7 +26,7 @@ class ResponseStructure(Enum):
 
 @allure.epic('Проверка Get метода (Single users)')
 class TestSingleUsers:
-    _CSV_FILE_PATH = '../../resources/csv/data/single_users/response_single_users.csv'
+    _CSV_FILE_PATH = os.path.abspath('./') + '/resources/csv/data/single_users/response_single_users.csv'
 
     @staticmethod
     def check_response(status_code: int, body: Any, extended_result: Any):

@@ -1,4 +1,5 @@
 import json
+import os
 from enum import Enum
 from typing import Any
 
@@ -9,6 +10,7 @@ import requests
 from api.post.login.request_login import RequestLogin
 from api.post.login.response_login import ResponseLoginSuccess, ResponseLoginUnsuccess
 from resources.csv.reader_csv_file import ReaderCsvFile
+
 from resources.url.url import Url
 
 
@@ -18,8 +20,8 @@ class ResponseStructure(Enum):
 
 @allure.epic('Проверка Post метода (Login)')
 class TestCreate:
-    _CSV_FILE_PATH_REQ = '../../resources/csv/data/login/request_login.csv'
-    _CSV_FILE_PATH_RES = '../../resources/csv/data/login/response_login.csv'
+    _CSV_FILE_PATH_REQ = os.path.abspath('./') + '/resources/csv/data/login/request_login.csv'
+    _CSV_FILE_PATH_RES = os.path.abspath('./') + '/resources/csv/data/login/response_login.csv'
 
     @staticmethod
     def check_response(status_code: int, result: Any, extended_result: Any):
