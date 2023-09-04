@@ -1,5 +1,4 @@
 import json
-import os
 from datetime import datetime
 from typing import Any
 
@@ -16,8 +15,8 @@ from resources.url.url import Url
 
 @allure.epic('Проверка Put метода (Update)')
 class TestUpdate:
-    _CSV_FILE_PATH_REQ = os.path.abspath('./') + '/resources/csv/data/update/request_update.csv'
-    _CSV_FILE_PATH_RES = os.path.abspath('./') + '/resources/csv/data/update/response_update.csv'
+    _CSV_FILE_PATH_REQ = './resources/csv/data/update/request_update.csv'
+    _CSV_FILE_PATH_RES = './resources/csv/data/update/response_update.csv'
 
     @staticmethod
     def check_response(status_code: int, result: Any, extended_result: Any):
