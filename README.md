@@ -27,3 +27,7 @@ allure serve allure_report/
 ## Пример Allure отчёта
 
 <img src="img/allure_report.png" width="800" height="400">
+
+## Пример Allure отчёта в Jenkins
+
+<img src="img/allure_report_jenkins.png" width="800" height="400">
