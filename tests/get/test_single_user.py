@@ -1,5 +1,4 @@
 import json
-import os
 from enum import Enum
 from typing import Any
 
@@ -47,9 +46,10 @@ class TestSingleUsers:
             raise 'Error status code!'
 
     @pytest.mark.parametrize('data_csv', ReaderCsvFile.read_csv_file(_CSV_FILE_PATH))
-    def test_single_users(self, data_csv):
+    def test_single_users(self, data_csv: tuple):
         with allure.step('Подготовка данных'):
             test_name, page = data_csv[:2]
+            allure.dynamic.title(test_name)
             extended_result = data_csv[1:]
             url = Url.URL_BASE + Request.URL_SINGLE_USER + page
         with allure.step('Get запрос'):

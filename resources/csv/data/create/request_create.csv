@@ -1,5 +1,5 @@
-﻿id_test,test_name,name,job
-1,Коректные данные,morpheus,leader
-2,Пропуск имени,,leader
-3,Пропуск работы,morpheus,
-4,Пустое тело запроса,,
+﻿test_name,name,job
+Коректные данные,morpheus,leader
+Пропуск имени,,leader
+Пропуск работы,morpheus,
+Пустое тело запроса,,

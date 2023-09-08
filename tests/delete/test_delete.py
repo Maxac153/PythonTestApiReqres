@@ -14,6 +14,8 @@ class TestDelete:
     def test_delete_method(self):
         with allure.step('Подготовка данных'):
             url = Url.URL_BASE + Request.URL_DELETE
+            test_name = 'Проверка работы метода DELETE'
+            allure.dynamic.title(test_name)
         with allure.step('Delete запрос'):
             response = requests.delete(url)
         with allure.step('Проверка ответа'):

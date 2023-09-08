@@ -30,7 +30,7 @@
 
 ## Пример запуска тестов
 
-<img src="img/allure_start.png" width="800" height="200">
+<img src="img/allure_start.png" width="800" height="250">
 
 ## Пример Allure отчёта
 

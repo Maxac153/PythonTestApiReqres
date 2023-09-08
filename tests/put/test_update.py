@@ -36,10 +36,11 @@ class TestUpdate:
     def test_update(self, data_csv):
         with allure.step('Подготовка данных'):
             data_req_csv, data_res_csv = data_csv
-            _, name, job = data_req_csv
+            test_name, name, job = data_req_csv
+            allure.dynamic.title(test_name)
             req = RequestUpdate(name, job)
             url = Url.URL_BASE + Url.URL_UPDATE
         with allure.step('Put запрос'):
-            response = requests.post(url, json.dumps(req.__dict__))
+            response = requests.post(url, req.__dict__)
         with allure.step('Проверка ответа'):
             self.check_response(response.status_code, response.json(), data_res_csv)

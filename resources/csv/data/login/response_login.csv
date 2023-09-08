@@ -1,5 +1,5 @@
 ﻿test_name,result
 Корректный ответ,QpwL5tke4Pnpja7X4
 "Ошибка, пропуск email",Missing email or username
-"Ошибка, пропуск password",Missing email or username
+"Ошибка, пропуск password",Missing password
 "Ошибка, пропуск всех полей",Missing email or username

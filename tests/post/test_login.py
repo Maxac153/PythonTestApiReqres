@@ -1,5 +1,4 @@
 import json
-import os
 from enum import Enum
 from typing import Any
 
@@ -39,13 +38,14 @@ class TestCreate:
         'data_csv',
         ReaderCsvFile.read_two_csv_file(_CSV_FILE_PATH_REQ, _CSV_FILE_PATH_RES)
     )
-    def test_login(self, data_csv):
+    def test_login(self, data_csv: tuple):
         with allure.step('Подготовка данных'):
             data_req_csv, data_res_csv = data_csv
-            _, email, password = data_req_csv
+            test_name, email, password = data_req_csv
+            allure.dynamic.title(test_name)
             req = RequestLogin(email, password)
             url = Url.URL_BASE + Url.URL_LOGIN
         with allure.step('Post запрос'):
-            response = requests.post(url, json.dumps(req.__dict__))
+            response = requests.post(url, req.__dict__)
         with allure.step('Проверка ответа'):
             self.check_response(response.status_code, response.json(), data_res_csv)
