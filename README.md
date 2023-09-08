@@ -2,23 +2,31 @@
 
 ## Описание
 
-Цель проекта: получения навыков в написании API авто тестов на Python
+Цель проекта: получения навыков в написании API авто тестов на Python<br>
 Сайт для тестирования (<a href="https://reqres.in/">REQRES</a>).
+
+## Окружение
+
+Перед тем как запускать тесты нужно установить необходимые зависемости<br>
+Введите следующую команду (нужно находиться внутри папки проекта):<br>
+<b>pip install -r requirements.txt</b>
 
 ## Запуск тестов
 
 Для запуска тестов нужно ввести следующую команду</br>
-py.test --alluredir=allure_report tests/
+<b>py.test --alluredir=allure_report tests/</b>
 
 Для просмотра результатов тестов</br>
-allure serve allure_report/
+<b>allure serve allure_report/</b>
 
 ## Технологии
 
-- Python 3.11
+- Python 3.11.2
 - Pytest
+- csv
 - Allure
 - Requests
+- Jenkins
 
 ## Пример запуска тестов
 
