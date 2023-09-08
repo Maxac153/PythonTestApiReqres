@@ -5,6 +5,15 @@
 Цель проекта: получения навыков в написании API авто тестов на Python<br>
 Сайт для тестирования (<a href="https://reqres.in/">REQRES</a>).
 
+## Технологии
+
+- Python 3.11.2
+- Pytest
+- csv
+- Allure
+- Requests
+- Jenkins
+
 ## Окружение
 
 Перед тем как запускать тесты нужно установить необходимые зависемости<br>
@@ -18,15 +27,6 @@
 
 Для просмотра результатов тестов</br>
 <b>allure serve allure_report/</b>
-
-## Технологии
-
-- Python 3.11.2
-- Pytest
-- csv
-- Allure
-- Requests
-- Jenkins
 
 ## Пример запуска тестов
 
