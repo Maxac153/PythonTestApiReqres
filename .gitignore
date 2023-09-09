@@ -1,5 +1,6 @@
 *.pytest_cache
 *allure_report
+/res
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/.gitignore
